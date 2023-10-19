@@ -1,5 +1,5 @@
 <template>
-  <div class="container m-5">
+  <div class="container position-absolute top-50 start-50 translate-middle">
     <p class="text-center fs-2">Pedidos Abertos</p>
     <table class="table">
       <thead class="table-danger">

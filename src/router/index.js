@@ -5,9 +5,6 @@ import HistoricoPedView from "@/views/HistoricoPedView.vue";
 import AdcItensView from "@/views/AdcItensView.vue";
 import FuncionariosView from "@/views/FuncionariosView.vue";
 import CardapioView from "@/views/CardapioView.vue";
-import MotoboysView from "@/views/MotoboysView.vue";
-import BairrosView from "@/views/BairrosView.vue";
-import EntregasView from "@/views/EntregasView.vue";
 
 import FullLayout from '@/layouts/FullLayout.vue'
 import BlankLayout from '@/layouts/BlankLayout.vue'
@@ -55,21 +52,6 @@ const router = createRouter({
             path: '/funcionarios',
             name: 'funcionarios',
             component: FuncionariosView,
-          },
-          {
-            path: '/motoboys',
-            name: 'motoboys',
-            component: MotoboysView,
-          },
-          {
-            path: '/bairros',
-            name: 'bairros',
-            component: BairrosView,
-          },
-          {
-            path: '/entregas',
-            name: 'entregas',
-            component: EntregasView,
           },
         ]
       },
