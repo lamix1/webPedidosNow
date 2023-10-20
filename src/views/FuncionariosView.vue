@@ -1,7 +1,9 @@
 <template>
-  <div class="container col-4 m-5 d-inline float-start">
+  <div class="card card-adc col-4 d-flex justify-content-center align-items-center p-4 float-start">
     <form>
-      <legend class="mb-4">Adicionar novo funcionário</legend>
+      <fieldset>
+        <legend>Adicionar Funcionários</legend>
+        <form>
       <div class="mb-3">
         <input
           type="text"
@@ -30,34 +32,64 @@
       </div>
       <button type="submit" class="btn btn-primary">Adicionar</button>
     </form>
+        </fieldset>
+    </form>
   </div>
-  <div class="container col-6 m-5 d-inline float-end">
-    <legend class="mb-4">Funcionários</legend>
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Nome</th>
-      <th scope="col">Email</th>
-      <th scope="col">Login</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">Maria</th>
-      <td>mariazinha@gamil.com</td>
-      <td>mariazinha1</td>
-    </tr>
-    <tr>
-      <th scope="row">Ana</th>
-      <td>aninha123@gmail.com</td>
-      <td>anananan</td>
-    </tr>
-    <tr>
-      <th scope="row">Camila</th>
-      <td>caimimi@gmail.com</td>
-      <td>camimimila34</td>
-    </tr>
-  </tbody>
-</table>
-  </div>
+
+  <div class="card card-funcionarios float-end">
+        <div class="card-header text-center py-3">
+          <h5 class="mb-0 text-center">
+            <strong>Funcionários</strong>
+          </h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th scope="col"><strong>Nome</strong></th>
+                  <th scope="col"><strong>Email</strong></th>
+                  <th scope="col"><strong>Login</strong></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Maria</td>
+                  <td>maria@gmail.com</td>
+                  <td>eduardo1</td>
+                </tr>
+                <tr>
+                  <td>Paulo</td>
+                  <td>paulo@gmail.com</td>
+                  <td>paulo1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    
+
+
 </template>
+
+<style>
+.card-adc {
+  width: 40rem;
+  height: 20rem;
+  margin-left: 10%;
+  
+}
+
+.card-funcionarios {
+  width: 40rem;
+  height: 20rem;
+  margin-right: 10%;
+}
+
+.btn-primary {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+</style>
