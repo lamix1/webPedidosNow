@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div v-for="(pedido, index) in pedidos" :key="index">
+      <div v-for="(pedido, index) in pedidosFiltrados" :key="index">
         <div class="card">
           <div class="card-content">
             <p class="mesa">Mesa # {{ pedido.mesa }}</p>
@@ -23,6 +23,11 @@ export default {
     return {
       pedidos: [],
     };
+  },
+  computed: {
+    pedidosFiltrados() {
+      return this.pedidos.filter((pedido) => pedido.status === 'PRODUCAO');
+    },
   },
   created() {
     axios
