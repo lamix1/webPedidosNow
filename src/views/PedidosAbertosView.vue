@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div v-for="(pedido, index) in pedidosFiltrados" :key="index">
-        <div class="card">
+        <div class="card" @click="showModal(pedido)">
           <div class="card-content">
             <p class="mesa">Mesa # {{ pedido.mesa }}</p>
             <p class="cliente">Cliente: {{ pedido.cliente }}</p>
@@ -12,6 +12,27 @@
         </div>
       </div>
     </div>
+
+   
+    <div v-if="selectedPedido" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="closeModal">&times;</span>
+        <h2>Detalhes do Pedido</h2>
+        <p><strong>Mesa:</strong> {{ selectedPedido.mesa }}</p>
+        <p><strong>Cliente:</strong> {{ selectedPedido.cliente }}</p>
+        <p><strong>Total:</strong> R$ {{ selectedPedido.total.toFixed(2) }}</p>
+        <p><strong>Status:</strong> {{ selectedPedido.status }}</p>
+        <h3>Itens do Pedido</h3>
+        <ul>
+          <li v-for="(item, itemIndex) in selectedPedido.itens" :key="itemIndex">
+            {{ item.produto.titulo }} x {{ item.quantidade }}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+
   </div>
 </template>
 
@@ -22,11 +43,24 @@ export default {
   data() {
     return {
       pedidos: [],
+      selectedPedido: null,
     };
   },
   computed: {
     pedidosFiltrados() {
-      return this.pedidos.filter((pedido) => pedido.status === 'PRODUCAO');
+    return this.pedidos.filter((pedido) => pedido.status === 'PRODUCAO');
+    },
+  },
+  methods: {
+    showModal(pedido) {
+      this.selectedPedido = pedido;
+      const modal = document.querySelector('.modal');
+      modal.style.display = 'block';
+    },
+    closeModal() {
+      this.selectedPedido = null;
+      const modal = document.querySelector('.modal');
+      modal.style.display = 'block';
     },
   },
   created() {
@@ -79,5 +113,35 @@ export default {
 .total {
   font-size: 16px;
   margin-top: 5px;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: 55rem;
+  height: 25rem;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: black;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
 }
 </style>
