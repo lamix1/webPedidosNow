@@ -17,58 +17,18 @@
           <th scope="col"><strong>Peso</strong></th>
           <th scope="col"><strong>Preço</strong></th>
           <th scope="col"><strong>Categoria</strong></th>
-          <th scope="col"><strong>Indisponibilidade</strong></th>
+          <!-- <th scope="col"><strong>Disponibilidade</strong></th> -->
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Porção de Batata Frita</td>
-          <td>500g</td>
-          <td>R$25,00</td>
-          <td>Porção</td>
-          <td><input class="form-check-input" type="checkbox" /></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Chawarma de Frango</td>
-          <td>250g</td>
-          <td>R$50,00</td>
-          <td>Chawarma</td>
-          <td><input class="form-check-input" type="checkbox" /></td>
-        </tr>
-        <tr>
-          <th scope="row">8</th>
-          <td>Fanta em Lata</td>
-          <td>350ml</td>
-          <td>R$5,00</td>
-          <td>Bebida</td>
-          <td><input class="form-check-input" type="checkbox" /></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Chawarma de Carne</td>
-          <td>150g</td>
-          <td>R$20,00</td>
-          <td>Chawarma</td>
-          <td><input class="form-check-input" type="checkbox" /></td>
-        </tr>
-        <tr>
-          <th scope="row">6</th>
-          <td>Porção de Carne</td>
-          <td>150g</td>
-          <td>R$30,00</td>
-          <td>Porção</td>
-          <td><input class="form-check-input" type="checkbox" /></td>
-        </tr>
-        <tr>
-          <th scope="row">7</th>
-          <td>Coca-Cola em Lata</td>
-          <td>350ml</td>
-          <td>R$5,00</td>
-          <td>Bebida</td>
-          <td><input class="form-check-input" type="checkbox" /></td>
-        </tr>
+        <tr v-for="item in produtos" :key="item.id">
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.titulo}}</td>
+                <td>{{ item.gramas }}</td>
+                <td>R$ {{ item.preco }}</td>
+                <td>{{ item.categoria }}</td>
+                <!-- <input class="form-check-input" type="checkbox" v-model="item.disponivel" /></td> -->
+              </tr>
       </tbody>
     </table>
   </div>
@@ -76,6 +36,32 @@
 </div>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      produtos: [], // Variável para armazenar os produtos
+    };
+  },
+  mounted() {
+    this.getProdutos(); // Chame o método para obter os produtos ao montar o componente
+  },
+  methods: {
+    getProdutos() {
+      axios.get('http://191.52.55.129:19002/api/produtos/')
+        .then((response) => {
+          this.produtos = response.data; // Armazena os produtos na variável
+        })
+        .catch((error) => {
+          console.error('Erro ao buscar os produtos:', error);
+        });
+    },
+  },
+};
+</script>
 
 <style scoped>
 
