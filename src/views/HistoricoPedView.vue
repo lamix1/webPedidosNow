@@ -1,43 +1,58 @@
 <template>
-  <div class="container position-absolute top-50 start-50 translate-middle">
-    <p class="text-center fs-2">Histórico de Pedidos</p>
-    <table class="table">
-      <thead class="table-danger">
-        <tr>
-          <td scope="col">Funcionário</td>
-          <th scope="col">ID</th>
-          <th scope="col">NOME</th>
-          <th scope="col">MESA</th>
-          <th scope="col">PEDIDO</th>
-          <th scope="col">TOTAL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">João</th>
-          <td>1</td>
-          <td>Ana</td>
-          <td>2</td>
-          <td>Porção de Batata Frita</td>
-          <td>$25</td>
-        </tr>
-        <tr>
-          <th scope="row">Alisson</th>
-          <td>2</td>
-          <td>Luiza</td>
-          <td>5</td>
-          <td>Chawarma de Frango com Requeijão</td>
-          <td>$28</td>
-        </tr>
-        <tr>
-          <th scope="row">Julia</th>
-          <td>3</td>
-          <td>Analu</td>
-          <td>3</td>
-          <td>Chapeado de 500G</td>
-          <td>45$</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="d-flex justify-content-center align-items-center">
+    
+    <div class="card">
+      <div class="card-header text-center py-3">
+        <h5 class="mb-0 text-center">
+          <strong>Histórico de Pedidos</strong>
+        </h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th scope="col"><strong>Funcionário</strong></th>
+                <th scope="col"><strong>ID</strong></th>
+                <th scope="col"><strong>Nome</strong></th>
+                <th scope="col"><strong>Mesa</strong></th>
+                <th scope="col"><strong>Pedido</strong></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Maria</td>
+                <td>2</td>
+                <td>Eduardo</td>
+                <td>10</td>
+                <td>Chawarma de Frango</td>
+              </tr>
+              <tr>
+                <td>Paulo</td>
+                <td>3</td>
+                <td>Telma</td>
+                <td>20</td>
+                <td>Porção de Calabresa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+</div>
+  
 </template>
+<style scoped>
+.card {
+  width: 80%;
+  height: 80%;
+  border-radius: 30px;
+}
+
+.table {
+  border-radius: 70px;
+  width: 100%;
+  height: 100%;
+}
+</style>
