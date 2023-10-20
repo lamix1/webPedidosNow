@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     getProdutos() {
-      axios.get('http://191.52.55.129:19002/api/produtos/')
+      axios.get('http://191.52.55.88:19002/api/produtos/')
         .then((response) => {
           this.produtos = response.data; // Armazena os produtos na variável
         })

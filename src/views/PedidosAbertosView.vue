@@ -65,7 +65,7 @@ export default {
   },
   created() {
     axios
-      .get('http://191.52.55.129:19002/api/pedidos/')
+      .get('http://191.52.55.88:19002/api/pedidos/')
       .then((response) => {
         this.pedidos = response.data;
       })
@@ -127,7 +127,11 @@ export default {
   transform: translate(-50%, -50%);
   border-radius: 10px;
   box-shadow: black;
+  position: relative;
 }
+.card:hover{top:-4px;box-shadow:0 4px 4px #999;
+   transition: all .2s ease-in-out}
+
 
 .modal-content {
   background-color: #fff;

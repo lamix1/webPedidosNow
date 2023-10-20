@@ -44,7 +44,7 @@ export default {
   methods: {
     adicionarItem() {
       axios
-        .post('http://191.52.55.129:19002/api/produtos/', this.novoItem) // Substitua 'URL_DO_BACKEND' pela URL correta
+        .post('http://191.52.55.88:19002/api/produtos/', this.novoItem) // Substitua 'URL_DO_BACKEND' pela URL correta
         .then((response) => {
           console.log('Item adicionado com sucesso!', response.data);
           this.novoItem = {

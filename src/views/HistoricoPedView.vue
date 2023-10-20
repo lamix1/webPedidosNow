@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <div v-for="(pedido, index) in pedidos" :key="index">
+      <div v-for="(pedido, index) in pedidosFiltrados" :key="index">
         <div class="card" @click="showModal(pedido)">
           <div class="card-content">
             <p class="mesa">Mesa # {{ pedido.mesa }}</p>
@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     pedidosFiltrados() {
-    return this.pedidos.filter((pedido) => pedido.status === 'PRODUCAO');
+    return this.pedidos.filter((pedido) => pedido.status == 'Pago');
     },
   },
   methods: {
@@ -65,7 +65,7 @@ export default {
   },
   created() {
     axios
-      .get('http://191.52.55.129:19002/api/pedidos/')
+      .get('http://191.52.55.88:19002/api/pedidos/')
       .then((response) => {
         this.pedidos = response.data;
       })
@@ -94,7 +94,10 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
+  position:relative;
 }
+.card:hover{top:-4px;box-shadow:0 4px 4px #999;
+   transition: all .2s ease-in-out}
 
 .mesa {
   font-size: 24px;
