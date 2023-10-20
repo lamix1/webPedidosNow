@@ -17,7 +17,7 @@
           <th scope="col"><strong>Peso</strong></th>
           <th scope="col"><strong>Preço</strong></th>
           <th scope="col"><strong>Categoria</strong></th>
-          <th scope="col"><strong>Indisponibilidade</strong></th>
+          <th scope="col"><strong>Disponibilidade</strong></th>
         </tr>
       </thead>
       <tbody>
