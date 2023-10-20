@@ -94,7 +94,6 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
-  position:relative;
 }
 .card:hover{top:-4px;box-shadow:0 4px 4px #999;
    transition: all .2s ease-in-out}
