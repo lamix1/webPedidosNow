@@ -1,58 +1,147 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center">
-    
-    <div class="card">
-      <div class="card-header text-center py-3">
-        <h5 class="mb-0 text-center">
-          <strong>Histórico de Pedidos</strong>
-        </h5>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table table-hover text-nowrap">
-            <thead>
-              <tr>
-                <th scope="col"><strong>Funcionário</strong></th>
-                <th scope="col"><strong>ID</strong></th>
-                <th scope="col"><strong>Nome</strong></th>
-                <th scope="col"><strong>Mesa</strong></th>
-                <th scope="col"><strong>Pedido</strong></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Maria</td>
-                <td>2</td>
-                <td>Eduardo</td>
-                <td>10</td>
-                <td>Chawarma de Frango</td>
-              </tr>
-              <tr>
-                <td>Paulo</td>
-                <td>3</td>
-                <td>Telma</td>
-                <td>20</td>
-                <td>Porção de Calabresa</td>
-              </tr>
-            </tbody>
-          </table>
+  <div>
+    <div class="container">
+      <div v-for="(pedido, index) in pedidos" :key="index">
+        <div class="card" @click="showModal(pedido)">
+          <div class="card-content">
+            <p class="mesa">Mesa # {{ pedido.mesa }}</p>
+            <p class="cliente">Cliente: {{ pedido.cliente }}</p>
+            <p class="total">Total: R$ {{ pedido.total.toFixed(2) }}</p>
+            <p class="status">Status: {{ pedido.status }}</p>
+          </div>
         </div>
       </div>
     </div>
-  
-</div>
-  
+
+   
+    <div v-if="selectedPedido" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="closeModal">&times;</span>
+        <h2>Detalhes do Pedido</h2>
+        <p><strong>Mesa:</strong> {{ selectedPedido.mesa }}</p>
+        <p><strong>Cliente:</strong> {{ selectedPedido.cliente }}</p>
+        <p><strong>Total:</strong> R$ {{ selectedPedido.total.toFixed(2) }}</p>
+        <p><strong>Status:</strong> {{ selectedPedido.status }}</p>
+        <h3>Itens do Pedido</h3>
+        <ul>
+          <li v-for="(item, itemIndex) in selectedPedido.itens" :key="itemIndex">
+            {{ item.produto.titulo }} x {{ item.quantidade }}
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+
+  </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      pedidos: [],
+      selectedPedido: null,
+    };
+  },
+  computed: {
+    pedidosFiltrados() {
+    return this.pedidos.filter((pedido) => pedido.status === 'PRODUCAO');
+    },
+  },
+  methods: {
+    showModal(pedido) {
+      this.selectedPedido = pedido;
+      const modal = document.querySelector('.modal');
+      modal.style.display = 'block';
+    },
+    closeModal() {
+      this.selectedPedido = null;
+      const modal = document.querySelector('.modal');
+      modal.style.display = 'block';
+    },
+  },
+  created() {
+    axios
+      .get('http://191.52.55.129:19002/api/pedidos/')
+      .then((response) => {
+        this.pedidos = response.data;
+      })
+      .catch((error) => {
+        console.error('Erro ao buscar os pedidos:', error);
+      });
+  },
+};
+</script>
+
 <style scoped>
-.card {
-  width: 80%;
-  height: 80%;
-  border-radius: 30px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
 }
 
-.table {
-  border-radius: 70px;
+.card {
+  width: 50rem;
+  height: 15rem;
+  margin-bottom: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mesa {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.status {
+  font-size: 18px;
+  color: #d32f2f;
+}
+
+.cliente {
+  font-size: 18px;
+}
+
+.total {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  width: 55rem;
+  height: 25rem;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: black;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
   width: 100%;
   height: 100%;
+  border-radius: 8px;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  cursor: pointer;
 }
 </style>
