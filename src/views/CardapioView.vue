@@ -43,17 +43,17 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      produtos: [], // Variável para armazenar os produtos
+      produtos: [], 
     };
   },
   mounted() {
-    this.getProdutos(); // Chame o método para obter os produtos ao montar o componente
+    this.getProdutos(); 
   },
   methods: {
     getProdutos() {
-      axios.get('http://191.52.55.88:19002/api/produtos/')
+      axios.get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/produtos/')
         .then((response) => {
-          this.produtos = response.data; // Armazena os produtos na variável
+          this.produtos = response.data; 
         })
         .catch((error) => {
           console.error('Erro ao buscar os produtos:', error);
