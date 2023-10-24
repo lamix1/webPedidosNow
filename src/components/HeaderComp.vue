@@ -41,7 +41,7 @@
               <a class="nav-link" href="#"><RouterLink to="/editarCardapio">Editar Cardápio</RouterLink></a>
             </li>
             <li class="nav-item m-2">
-              <a class="nav-link" href="#"><RouterLink to="visuCardapio">Visualizar Cardápio</RouterLink></a>
+              <a class="nav-link" href="#"><RouterLink to="/visuCardapio">Visualizar Cardápio</RouterLink></a>
             </li>
             <li class="nav-item m-2">
               <a class="nav-link" href="#"><RouterLink to="/funcionarios">Controle de Funcionários</RouterLink></a>
