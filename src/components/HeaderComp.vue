@@ -46,6 +46,9 @@
             <li class="nav-item m-2">
               <a class="nav-link" href="#"><RouterLink to="/funcionarios">Controle de Funcionários</RouterLink></a>
             </li>
+            <li class="nav-item m-2">
+              <a class="nav-link" href="#"><RouterLink to="/motoboys">Controle de Motoboys</RouterLink></a>
+            </li>
       </ul>
       <!-- Left links -->
     </div>
