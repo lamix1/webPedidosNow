@@ -93,7 +93,6 @@ import axios from 'axios';
       };
     },
     mounted() {
-      // Carregar motoboys ao iniciar
       this.carregarMotoboys();
     },
     methods: {
@@ -117,7 +116,7 @@ import axios from 'axios';
               telefone: '',
               email: '',
             };
-            this.carregarMotoboys(); // Recarregar a lista após adicionar
+            this.carregarMotoboys();
           })
           .catch((error) => {
             console.error('Erro ao adicionar motoboy:', error);
@@ -128,7 +127,7 @@ import axios from 'axios';
           .delete(`https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/motoboys/${id}/`)
           .then(() => {
             console.log('Motoboy excluído com sucesso!');
-            this.carregarMotoboys(); // Recarregar a lista após excluir
+            this.carregarMotoboys();
           })
           .catch((error) => {
             console.error('Erro ao excluir motoboy:', error);
