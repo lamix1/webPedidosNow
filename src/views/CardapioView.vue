@@ -7,7 +7,6 @@
         </h5>
       </div>
       <div class="card-body m-3">
-        
         <div class="form-group">
           <input
             type="text"
@@ -16,7 +15,6 @@
             v-model="searchTerm"
             placeholder="Busca por nome"
           />
-          
         </div>
 
         <div class="table-responsive m-3">
@@ -47,39 +45,38 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   data() {
     return {
       produtos: [],
-      searchTerm: '', // Adicionando a propriedade para armazenar o termo de pesquisa
-    };
+      searchTerm: ''
+    }
   },
   computed: {
     filteredProdutos() {
-      // Filtrando os produtos com base no termo de pesquisa
-      return this.produtos.filter(item =>
+      return this.produtos.filter((item) =>
         item.titulo.toLowerCase().includes(this.searchTerm.toLowerCase())
-      );
-    },
+      )
+    }
   },
   mounted() {
-    this.getProdutos();
+    this.getProdutos()
   },
   methods: {
     getProdutos() {
       axios
         .get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/produtos/')
         .then((response) => {
-          this.produtos = response.data;
+          this.produtos = response.data
         })
         .catch((error) => {
-          console.error('Erro ao buscar os produtos:', error);
-        });
-    },
-  },
-};
+          console.error('Erro ao buscar os produtos:', error)
+        })
+    }
+  }
+}
 </script>
 
 <style scoped>

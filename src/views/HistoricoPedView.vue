@@ -13,7 +13,6 @@
       </div>
     </div>
 
-   
     <div v-if="selectedPedido" class="modal">
       <div class="modal-content">
         <span class="close" @click="closeModal">&times;</span>
@@ -29,51 +28,48 @@
           </li>
         </ul>
       </div>
-
     </div>
-
-
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   data() {
     return {
       pedidos: [],
-      selectedPedido: null,
-    };
+      selectedPedido: null
+    }
   },
   computed: {
     pedidosFiltrados() {
-    return this.pedidos.filter((pedido) => pedido.status == 'Pago');
-    },
+      return this.pedidos.filter((pedido) => pedido.status == 'Pago')
+    }
   },
   methods: {
     showModal(pedido) {
-      this.selectedPedido = pedido;
-      const modal = document.querySelector('.modal');
-      modal.style.display = 'block';
+      this.selectedPedido = pedido
+      const modal = document.querySelector('.modal')
+      modal.style.display = 'block'
     },
     closeModal() {
-      this.selectedPedido = null;
-      const modal = document.querySelector('.modal');
-      modal.style.display = 'block';
-    },
+      this.selectedPedido = null
+      const modal = document.querySelector('.modal')
+      modal.style.display = 'block'
+    }
   },
   created() {
     axios
       .get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/pedidos/')
       .then((response) => {
-        this.pedidos = response.data;
+        this.pedidos = response.data
       })
       .catch((error) => {
-        console.error('Erro ao buscar os pedidos:', error);
-      });
-  },
-};
+        console.error('Erro ao buscar os pedidos:', error)
+      })
+  }
+}
 </script>
 
 <style scoped>
@@ -95,8 +91,11 @@ export default {
   padding: 20px;
   box-sizing: border-box;
 }
-.card:hover{top:-4px;box-shadow:0 4px 4px #999;
-   transition: all .2s ease-in-out}
+.card:hover {
+  top: -4px;
+  box-shadow: 0 4px 4px #999;
+  transition: all 0.2s ease-in-out;
+}
 
 .mesa {
   font-size: 24px;
@@ -116,7 +115,6 @@ export default {
   font-size: 16px;
   margin-top: 5px;
 }
-
 
 .modal {
   display: none;

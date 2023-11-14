@@ -5,17 +5,32 @@
       <fieldset>
         <legend>Adicione itens</legend>
         <div class="mb-3">
-          <input v-model="novoItem.titulo" type="text" id="disabledTextInput" class="form-control" placeholder="Nome" />
+          <input
+            v-model="novoItem.titulo"
+            type="text"
+            id="disabledTextInput"
+            class="form-control"
+            placeholder="Nome"
+          />
         </div>
 
         <div class="input-group mb-3">
           <span class="input-group-text">$</span>
-          <input v-model="novoItem.preco" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+          <input
+            v-model="novoItem.preco"
+            type="text"
+            class="form-control"
+            aria-label="Amount (to the nearest dollar)"
+          />
           <span class="input-group-text">.00</span>
         </div>
 
         <div class="mb-3">
-          <select v-model="novoItem.categoria" class="form-select" aria-label="Default select example">
+          <select
+            v-model="novoItem.categoria"
+            class="form-select"
+            aria-label="Default select example"
+          >
             <option selected disabled>Categoria</option>
             <option value="1">Chawarma</option>
             <option value="2">Bebida</option>
@@ -29,7 +44,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 
 export default {
   data() {
@@ -37,26 +52,26 @@ export default {
       novoItem: {
         titulo: '',
         preco: '',
-        categoria: '',
-      },
-    };
+        categoria: ''
+      }
+    }
   },
   methods: {
     adicionarItem() {
       axios
-        .post('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/produtos/', this.novoItem) 
+        .post('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/produtos/', this.novoItem)
         .then((response) => {
-          console.log('Item adicionado com sucesso!', response.data);
+          console.log('Item adicionado com sucesso!', response.data)
           this.novoItem = {
             titulo: '',
             preco: '',
-            categoria: '',
-          };
+            categoria: ''
+          }
         })
         .catch((error) => {
-          console.error('Erro ao adicionar item:', error);
-        });
-    },
-  },
-};
+          console.error('Erro ao adicionar item:', error)
+        })
+    }
+  }
+}
 </script>
