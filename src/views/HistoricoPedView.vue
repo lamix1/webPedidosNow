@@ -90,6 +90,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
   box-sizing: border-box;
+  border-left: 6px solid #d32f2f;
 }
 .card:hover {
   top: -4px;
