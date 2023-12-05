@@ -32,9 +32,7 @@
             aria-label="Default select example"
           >
             <option selected disabled>Categoria</option>
-            <option value="1">Chawarma</option>
-            <option value="2">Bebida</option>
-            <option value="3">Porção</option>
+            <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">{{categoria.descricao}}</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary float-end">Adicionar</button>
@@ -53,8 +51,14 @@ export default {
         titulo: '',
         preco: '',
         categoria: ''
-      }
+      },
+      categorias: []
     }
+  },
+  created() {
+    axios.get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/categorias/').then((response) => {
+      this.categorias = response.data
+    })
   },
   methods: {
     adicionarItem() {
