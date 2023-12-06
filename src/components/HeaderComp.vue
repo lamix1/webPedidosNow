@@ -51,6 +51,15 @@
               ><RouterLink to="/funcionarios">Controle de Funcionários</RouterLink></a
             >
           </li>
+          <li class="nav-item m-2">
+            <a class="nav-link" href="#"><RouterLink to="/motoboys">Controle de Motoboys</RouterLink></a>
+          </li>
+          <li class="nav-item m-2">
+            <a class="nav-link" href="#"><RouterLink to="/bairros">Controle de Bairros</RouterLink></a>
+          </li>
+          <li class="nav-item m-2">
+            <a class="nav-link" href="#"><RouterLink to="/entregas">Entregas</RouterLink></a>
+          </li>
         </ul>
       </div>
     </div>
