@@ -77,13 +77,13 @@
   </template>
   <style>
   .card-adc {
-    width: 40rem;
+    width: 30rem;
     height: 20rem;
     margin-left: 10%;
   }
   
   .card-motoboys {
-    width: 40rem;
+    width: 30rem;
     height: 20rem;
     margin-left: 10%;
   }
@@ -117,7 +117,7 @@
     methods: {
       carregarMotoboys() {
         axios
-          .get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/motoboys/')
+          .get('http://0.0.0.0:19003/api/motoboys/')
           .then((response) => {
             this.motoboys = response.data
           })
@@ -127,7 +127,7 @@
       },
       adicionarMotoboy() {
         axios
-          .post('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/motoboys/', this.novoMotoboy)
+          .post('http://0.0.0.0:19003/api/motoboys/', this.novoMotoboy)
           .then((response) => {
             console.log('Motoboy adicionado com sucesso!', response.data)
             this.novoMotoboy = {
@@ -143,7 +143,7 @@
       },
       excluirMotoboy(id) {
         axios
-          .delete(`https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/motoboys/${id}/`)
+          .delete(`http://0.0.0.0:19003/api/motoboys/${id}/`)
           .then(() => {
             console.log('Motoboy excluído com sucesso!')
             this.carregarMotoboys()

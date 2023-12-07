@@ -56,14 +56,14 @@ export default {
     }
   },
   created() {
-    axios.get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/categorias/').then((response) => {
+    axios.get('http://0.0.0.0:19003/api/categorias/').then((response) => {
       this.categorias = response.data
     })
   },
   methods: {
     adicionarItem() {
       axios
-        .post('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/produtos/', this.novoItem)
+        .post('http://0.0.0.0:19003/api/produtos/', this.novoItem)
         .then((response) => {
           console.log('Item adicionado com sucesso!', response.data)
           this.novoItem = {

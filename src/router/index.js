@@ -7,6 +7,7 @@ import FuncionariosView from "@/views/FuncionariosView.vue";
 import CardapioView from "@/views/CardapioView.vue";
 import BairrosView from "@/views/BairrosView.vue";
 import MotoboysView from "@/views/MotoboysView.vue";
+import EntregasView from "@/views/EntregasView.vue";
 
 import FullLayout from '@/layouts/FullLayout.vue'
 import BlankLayout from '@/layouts/BlankLayout.vue'
@@ -59,10 +60,16 @@ const router = createRouter({
             path: '/motoboys',
             name: 'motoboyss',
             component: MotoboysView,
-          },{
+          },
+          {
             path: '/bairros',
             name: 'bairros',
             component: BairrosView,
+          },
+          {
+            path: '/entregas',
+            name: 'entregas',
+            component: EntregasView,
           },
         ]
       },

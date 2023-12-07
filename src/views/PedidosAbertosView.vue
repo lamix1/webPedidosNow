@@ -61,7 +61,7 @@ export default {
   },
   created() {
     axios
-      .get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/pedidos/')
+      .get('http://0.0.0.0:19003/api/pedidos/')
       .then((response) => {
         this.pedidos = response.data
       })

@@ -105,7 +105,7 @@
     methods: {
       carregarBairros() {
         axios
-          .get('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/bairros/')
+          .get('http://0.0.0.0:19003/api/bairros/')
           .then((response) => {
             this.bairros = response.data
           })
@@ -115,7 +115,7 @@
       },
       adicionarBairro() {
         axios
-          .post('https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/bairros/', this.novoBairro)
+          .post('http://0.0.0.0:19003/api/bairros/', this.novoBairro)
           .then((response) => {
             console.log('Bairro adicionado com sucesso!', response.data)
             this.novoBairro = {
@@ -130,7 +130,7 @@
       },
       excluirBairro(id) {
         axios
-          .delete(`https://backendpedidosnow-dev-pabx.1.ie-1.fl0.io/api/bairros/${id}/`)
+          .delete(`http://0.0.0.0:19003/api/bairros/${id}/`)
           .then(() => {
             console.log('Bairro excluído com sucesso!')
             this.carregarBairros()
